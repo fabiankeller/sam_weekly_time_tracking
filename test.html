@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Selfmade JIRA Tracking</title>
+    <meta charset="utf-8">
+
+</head>
+<body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="tracking.js"></script>
+
+
+<div class="row-fluid">
+    <div class="col-lg-12">
+        <table id="results" class="table table-striped">
+            <thead>
+            <tr>
+                <th id="member">Team-Member</th>
+                <th id="monday">Monday</th>
+                <th id="tuesday">Tuesday</th>
+                <th id="wednesday">Wednesday</th>
+                <th id="thursday">Thursday</th>
+                <th id="friday">Friday</th>
+                <th id="saturday">Saturday</th>
+                <th id="sunday">Sunday</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<script>
+    AJS.$(window).load(function () {
+        window.gadget = AJS.Gadget({
+            baseUrl: "http://jira.swisscom.com",
+            view: {
+                onResizeAdjustHeight: true,
+                template: function (args) {
+                    Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"]);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
