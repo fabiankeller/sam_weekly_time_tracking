@@ -6,7 +6,7 @@
         getIssuesUserHasLoggedWorkOnToday(users);
         AJS.$(document).ajaxStop(function () {
             if (0 === AJS.$.active) {
-                gadget.resize();
+
             }
         });
     }
@@ -49,6 +49,7 @@
                             if (sumLoggedWork > 0) {
                                 var cell = AJS.$("#" + day + "_" + currentUser);
                                 cell.append('<span><a style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" target="_blank" href="/browse/' + issue.key + '">' + issue.fields.summary + ': ' + sumLoggedWork / 3600 + 'h</a></span><br/>');
+                                gadget.resize();
                             }
                         });
                     });
