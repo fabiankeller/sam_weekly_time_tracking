@@ -4,7 +4,6 @@
 
     function init(users) {
         getIssuesUserHasLoggedWorkOnToday(users);
-        gadget.resize();
     }
 
     function getFormattedDate(date) {
