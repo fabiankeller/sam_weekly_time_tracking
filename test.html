@@ -4,15 +4,28 @@
     <title>Selfmade JIRA Tracking</title>
     <meta charset="utf-8">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://rawgit.com/magruene/sam_weekly_time_tracking/7db798184d60a789367162211dd64cccc6078905/tracking.js"></script>
+    <script>
+        AJS.$(window).load(function () {
+            window.gadget = AJS.Gadget({
+                baseUrl: "http://jira.swisscom.com",
+                view: {
+                    onResizeAdjustHeight: true,
+                    template: function (args) {
+                    }
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="tracking.js"></script>
 
 
 <div class="row-fluid">
     <div class="col-lg-12">
+        <button onclick='Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"]);'>GO</button>
         <table id="results" class="table table-striped">
             <thead>
             <tr>
@@ -34,19 +47,6 @@
 </div>
 <br>
 <br>
-<script>
-    AJS.$(window).load(function () {
-        window.gadget = AJS.Gadget({
-            baseUrl: "http://jira.swisscom.com",
-            view: {
-                onResizeAdjustHeight: true,
-                template: function (args) {
-                    Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"]);
-                }
-            }
-        });
-    });
-</script>
 
 </body>
 </html>

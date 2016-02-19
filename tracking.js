@@ -4,6 +4,11 @@
 
     function init(users) {
         getIssuesUserHasLoggedWorkOnToday(users);
+        AJS.$(document).ajaxStop(function () {
+            if (0 === AJS.$.active) {
+                gadget.resize();
+            }
+        });
     }
 
     function getFormattedDate(date) {
