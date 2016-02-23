@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://rawgit.com/magruene/sam_weekly_time_tracking/1a4e811010b553860506de884c6599302d7d8a82/tracking.js"></script>
+    <script src="https://rawgit.com/magruene/sam_weekly_time_tracking/cb9a71e5b1f80d1ed072667069d96288d6420395/tracking.js"></script>
     <script>
         AJS.$(window).load(function () {
             window.gadget = AJS.Gadget({
@@ -27,7 +27,11 @@
 
 
 <div class="row-fluid">
-    <input id="weeksInPast" max="0" type="number" class="form-control">
+    <label class="col-sm-2 control-label">Weeks in the past:</label>
+
+    <div class="col-sm-2">
+        <input id="weeksInPast" max="0" type="number" value="0" class="form-control">
+    </div>
     <div class="col-lg-12">
         <table id="results" class="table table-striped">
             <thead>

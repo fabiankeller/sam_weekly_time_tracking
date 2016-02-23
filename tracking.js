@@ -4,10 +4,8 @@
 
     function init(users) {
         getIssuesUserHasLoggedWorkOnToday(users);
-        AJS.$(document).ajaxStop(function () {
-            if (0 === AJS.$.active) {
-
-            }
+        $("weeksInPast").change(function() {
+           getIssuesUserHasLoggedWorkOnToday(users);
         });
     }
 
