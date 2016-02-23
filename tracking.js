@@ -61,6 +61,8 @@
     function getWeek() {
         var today, todayNumber;
         today = new Date();
+        var val = $("#weeksInPast").val();
+        today.setDate(today.getDate() - (val * 7));
         todayNumber = today.getDay();
         return {
             monday: new Date(today.getFullYear(), today.getMonth(), today.getDate() + (1 - todayNumber)),

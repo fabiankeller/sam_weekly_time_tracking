@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://rawgit.com/magruene/sam_weekly_time_tracking/d64cf079b97a023da8e458d0e41d9278d7a9722b/tracking.js"></script>
+    <script src="https://rawgit.com/magruene/sam_weekly_time_tracking/1a4e811010b553860506de884c6599302d7d8a82/tracking.js"></script>
     <script>
         AJS.$(window).load(function () {
             window.gadget = AJS.Gadget({
@@ -14,6 +14,9 @@
                 view: {
                     onResizeAdjustHeight: true,
                     template: function (args) {
+                        setTimeout(function () {
+                            Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"])
+                        }, 200);
                     }
                 }
             });
@@ -24,10 +27,8 @@
 
 
 <div class="row-fluid">
+    <input id="weeksInPast" max="0" type="number" class="form-control">
     <div class="col-lg-12">
-        <button class="btn btn-primary"
-                onclick='Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"]);'>GO
-        </button>
         <table id="results" class="table table-striped">
             <thead>
             <tr>
@@ -52,4 +53,3 @@
 
 </body>
 </html>
-
