@@ -6,32 +6,21 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://rawgit.com/magruene/sam_weekly_time_tracking/cb9a71e5b1f80d1ed072667069d96288d6420395/tracking.js"></script>
-    <script>
-        AJS.$(window).load(function () {
-            window.gadget = AJS.Gadget({
-                baseUrl: "http://jira.swisscom.com",
-                view: {
-                    onResizeAdjustHeight: true,
-                    template: function (args) {
-                        setTimeout(function () {
-                            Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"])
-                        }, 200);
-                    }
-                }
-            });
-        });
-    </script>
+    <!--<script src="https://rawgit.com/magruene/sam_weekly_time_tracking/6af4da0ecc6bd61ed9dfbc66a5d36f9fe1249797/tracking.js"></script>-->
+    <script src="tracking.js"></script>
+
 </head>
 <body>
 
 
 <div class="row-fluid">
-    <label class="col-sm-2 control-label">Weeks in the past:</label>
+    <label class="col-sm-1 control-label">Weeks in the past:</label>
 
     <div class="col-sm-2">
         <input id="weeksInPast" max="0" type="number" value="0" class="form-control">
     </div>
+</div>
+<div class="row-fluid">
     <div class="col-lg-12">
         <table id="results" class="table table-striped">
             <thead>
@@ -54,6 +43,25 @@
 </div>
 <br>
 <br>
+<script>
+    if (undefined === window.AJS) {
+        Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"])
+    } else {
+        AJS.$(window).load(function () {
+            window.gadget = AJS.Gadget({
+                baseUrl: "http://jira.swisscom.com",
+                view: {
+                    onResizeAdjustHeight: true,
+                    template: function (args) {
+                        setTimeout(function () {
+                            Report.init(["taagrma3", "taahamai", "taaaran4", "taahamaj", "taahamac", "taascdo6"])
+                        }, 200);
+                    }
+                }
+            });
+        });
+    }
 
+</script>
 </body>
 </html>

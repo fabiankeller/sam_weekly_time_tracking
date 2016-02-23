@@ -4,8 +4,9 @@
 
     function init(users) {
         getIssuesUserHasLoggedWorkOnToday(users);
-        $("weeksInPast").change(function() {
-           getIssuesUserHasLoggedWorkOnToday(users);
+        $("#weeksInPast").change(function () {
+            $("#results tbody").empty();
+            getIssuesUserHasLoggedWorkOnToday(users);
         });
     }
 
@@ -60,7 +61,7 @@
         var today, todayNumber;
         today = new Date();
         var val = $("#weeksInPast").val();
-        today.setDate(today.getDate() - (val * 7));
+        today.setDate(today.getDate() + (val * 7));
         todayNumber = today.getDay();
         return {
             monday: new Date(today.getFullYear(), today.getMonth(), today.getDate() + (1 - todayNumber)),
