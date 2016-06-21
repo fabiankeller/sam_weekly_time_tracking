@@ -1,6 +1,4 @@
-(function (global, $) {
-    var AJS = {};
-    AJS.$ = $;
+(function (global) {
 
     function init(users) {
         getIssuesUserHasLoggedWorkOnToday(users);
@@ -94,4 +92,4 @@
     global.Report = {};
     Report.init = init;
 
-})(window, jQuery);
+})(window);
