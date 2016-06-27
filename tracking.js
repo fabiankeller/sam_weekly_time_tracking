@@ -46,7 +46,7 @@
                             if (sumLoggedWork > 0) {
                                 var cell = AJS.$("#" + day + "_" + currentUser);
                                 cell.append('<span><a style="overflow: hidden; text-overflow: ellipsis;" target="_blank" href="/browse/' + issue.key + '">' + issue.fields.summary + ': ' + sumLoggedWork / 3600 + 'h</a></span><br/>');
-                                gadget.resize();
+                                
                             }
                         });
                     });
