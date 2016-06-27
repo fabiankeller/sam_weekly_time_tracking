@@ -1,6 +1,7 @@
 (function (global) {
-    
-    function init(users) {
+    var gadgetId;
+    function init(users, givenGadgetId) {
+        gadgetId = givenGadgetId;
         getIssuesUserHasLoggedWorkOnToday(users);
         $("#weeksInPast").change(function () {
             $("#results tbody").empty();
@@ -46,7 +47,10 @@
                             if (sumLoggedWork > 0) {
                                 var cell = $("#" + day + "_" + currentUser);
                                 cell.append('<span><a style="overflow: hidden; text-overflow: ellipsis;" target="_blank" href="/browse/' + issue.key + '">' + issue.fields.summary + ': ' + sumLoggedWork / 3600 + 'h</a></span><br/>');
-                                
+                                AJS.$("#" + givenGadgetId + " iframe").css("height", $("html").css("height"));
+                                AJS.$.each(parent.AG.DashboardManager.activeLayout.getGadgets(), function(index, gadget) {
+                                    gadget.resize();
+                                });
                             }
                         });
                     });
