@@ -1,5 +1,5 @@
 (function (global) {
-
+    
     function init(users) {
         getIssuesUserHasLoggedWorkOnToday(users);
         $("#weeksInPast").change(function () {
@@ -25,7 +25,7 @@
     }
 
     function calculateLoggedWorkSumOnGivenIssue(currentUser, issue) {
-        return AJS.$.ajax({
+        return $.ajax({
             url: "http://jira.swisscom.com/rest/api/2/issue/" + issue.key + "/worklog",
             contentType: 'application/json',
             dataType: "json",
@@ -34,9 +34,9 @@
 
                 if (worklogs.worklogs.length > 0) {
 
-                    AJS.$.each(worklogs.worklogs, function (index, worklog) {
+                    $.each(worklogs.worklogs, function (index, worklog) {
                         var started = new Date(worklog.started).getTime();
-                        AJS.$.each(week, function (day, date) {
+                        $.each(week, function (day, date) {
                             var tomorrow = new Date(date);
                             var sumLoggedWork = 0;
                             tomorrow.setDate(date.getDate() + 1);
@@ -44,7 +44,7 @@
                                 sumLoggedWork += worklog.timeSpentSeconds;
                             }
                             if (sumLoggedWork > 0) {
-                                var cell = AJS.$("#" + day + "_" + currentUser);
+                                var cell = $("#" + day + "_" + currentUser);
                                 cell.append('<span><a style="overflow: hidden; text-overflow: ellipsis;" target="_blank" href="/browse/' + issue.key + '">' + issue.fields.summary + ': ' + sumLoggedWork / 3600 + 'h</a></span><br/>');
                                 
                             }
@@ -74,14 +74,14 @@
 
     function getIssuesUserHasLoggedWorkOnToday(usernames) {
         var week = getWeek();
-        AJS.$.each(usernames, function (index, username) {
-            AJS.$("#results tbody").append("<tr id='" + username + "'><td>" + username + "</td><td id='monday_" + username + "'></td><td id='tuesday_" + username + "'></td><td id='wednesday_" + username + "'></td><td id='thursday_" + username + "'></td><td id='friday_" + username + "'></td><td id='saturday_" + username + "'></td><td id='sunday_" + username + "'></td></tr>");
-            AJS.$.ajax({
+        $.each(usernames, function (index, username) {
+            $("#results tbody").append("<tr id='" + username + "'><td>" + username + "</td><td id='monday_" + username + "'></td><td id='tuesday_" + username + "'></td><td id='wednesday_" + username + "'></td><td id='thursday_" + username + "'></td><td id='friday_" + username + "'></td><td id='saturday_" + username + "'></td><td id='sunday_" + username + "'></td></tr>");
+            $.ajax({
                 url: "http://jira.swisscom.com/rest/api/2/search?jql=issueFunction in workLogged('by " + username + " after " + getFormattedDate(week.monday) + " before " + getFormattedDate(week.sunday) + "')",
                 contentType: 'application/json',
                 dataType: "json",
                 success: function (issues) {
-                    AJS.$.each(issues.issues, function (index, issue) {
+                    $.each(issues.issues, function (index, issue) {
                         calculateLoggedWorkSumOnGivenIssue(username, issue);
                     });
                 }
