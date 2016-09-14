@@ -82,7 +82,7 @@
         $.each(usernames, function (index, username) {
             $("#results tbody").append("<tr id='" + username + "'><td>" + username + "</td><td id='monday_" + username + "'></td><td id='tuesday_" + username + "'></td><td id='wednesday_" + username + "'></td><td id='thursday_" + username + "'></td><td id='friday_" + username + "'></td><td id='saturday_" + username + "'></td><td id='sunday_" + username + "'></td></tr>");
             $.ajax({
-                url: "http://jira.swisscom.com/rest/api/2/search?jql=issueFunction in workLogged('by " + username + " after startOfWeek(" + (weeksInPast - 1) + " before " + endOfWeek(weeksInPast) + "')",
+                url: "http://jira.swisscom.com/rest/api/2/search?jql=issueFunction in workLogged('by " + username + " after startOfWeek(" + (weeksInPast - 1) + ") before endOfWeek(" + weeksInPast + ")')",
                 contentType: 'application/json',
                 dataType: "json",
                 success: function (issues) {
