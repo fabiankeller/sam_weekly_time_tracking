@@ -27,7 +27,7 @@
 
     function calculateLoggedWorkSumOnGivenIssue(currentUser, issue) {
         return $.ajax({
-            url: "http://jira.swisscom.com/rest/api/2/issue/" + issue.key + "/worklog",
+            url: "https://jira.swisscom.com/rest/api/2/issue/" + issue.key + "/worklog",
             contentType: 'application/json',
             dataType: "json",
             success: function (worklogs) {
