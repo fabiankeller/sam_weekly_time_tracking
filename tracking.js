@@ -41,7 +41,7 @@
                             var tomorrow = new Date(date);
                             var sumLoggedWork = 0;
                             tomorrow.setDate(date.getDate() + 1);
-                            if (started > date.getTime() && tomorrow.getTime() > started && worklog.author.name === currentUser) {
+                            if (started > date.getTime() && tomorrow.getTime() > started && worklog.author.name.toLowerCase() === currentUser) {
                                 sumLoggedWork += worklog.timeSpentSeconds;
                             }
                             if (sumLoggedWork > 0) {
@@ -80,7 +80,7 @@
         var week = getWeek();
         var weeksInPast = $("#weeksInPast").val();
         $.each(users, function (index, user) {
-            var username = user.id;
+            var username = user.id.toLowerCase();
             var personName = user.person;
             $("#results tbody").append("<tr id='" + username + "'><td>" + personName + "</td><td id='monday_" + username + "'></td><td id='tuesday_" + username + "'></td><td id='wednesday_" + username + "'></td><td id='thursday_" + username + "'></td><td id='friday_" + username + "'></td><td id='saturday_" + username + "'></td><td id='sunday_" + username + "'></td></tr>");
             $.ajax({
